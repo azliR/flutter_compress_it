@@ -70,8 +70,8 @@ class _AudioTileState extends State<AudioTile> with AutoRouteAware {
 
   @override
   void dispose() {
-    super.dispose();
     _observer?.unsubscribe(this);
+    super.dispose();
   }
 
   @override

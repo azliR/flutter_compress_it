@@ -30,29 +30,42 @@ class _AudioCompressorPageState extends State<AudioCompressorPage> {
   double _quality = 5;
   double _bitrate = 128;
 
+  var _compressQueueIndex = 0;
+
   var _compressBy = CompressBy.quality;
 
   Future<void> _enableStatisticsCallback() async {
-    var totalAudioDuration = 0.0;
+    final audioDurations = <double>[];
 
     for (var i = 0; i < widget.files.length; i++) {
       final (mediaInfo, failure) =
           await _repository.getMediaInformation(widget.files[i].path!);
       if (failure != null) {
+        await EasyLoading.showError(
+          'Gagal mengambil informasi dari file audio',
+        );
         return;
       }
-      totalAudioDuration += double.parse(mediaInfo!.getDuration()!);
+      audioDurations.add(double.parse(mediaInfo!.getDuration()!));
     }
 
-    FFmpegKitConfig.enableStatisticsCallback((Statistics statistics) {
+    FFmpegKitConfig.enableStatisticsCallback((Statistics statistics) async {
       final timeInMilliseconds = statistics.getTime();
       if (timeInMilliseconds > 0) {
         final completePercentage =
-            (timeInMilliseconds / 10) ~/ totalAudioDuration;
-        EasyLoading.showProgress(
+            (timeInMilliseconds / 10) ~/ audioDurations[_compressQueueIndex];
+        await EasyLoading.showProgress(
           completePercentage / 100,
-          status: '$completePercentage%',
+          status:
+              'Selesai $_compressQueueIndex/${audioDurations.length} : $completePercentage%',
         );
+        if (completePercentage == 100) {
+          if (_compressQueueIndex == audioDurations.length - 1) {
+            _compressQueueIndex = 0;
+          } else {
+            _compressQueueIndex++;
+          }
+        }
       }
     });
   }
