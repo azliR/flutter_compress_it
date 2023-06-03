@@ -17,6 +17,7 @@ class ImageCompressorRepository {
     required int quality,
     required int? minWidth,
     required int? minHeight,
+    required CompressFormat compressFormat,
   }) async {
     try {
       final compressedFiles = <PlatformFile>[];
@@ -42,14 +43,18 @@ class ImageCompressorRepository {
         final compressedImage = await FlutterImageCompress.compressWithFile(
           resizedImagePath,
           quality: quality,
+          format: compressFormat,
         );
 
         if (compressedImage == null) {
           return (null, Failure('Gagal mengompres gambar'));
         }
 
+        final compressedImageName =
+            (file.name.split('.')..removeLast()).join('.');
+        final compressedImageExt = compressFormat.name;
         final compressedImagePath =
-            '${temporaryDir.path}/compressed_${file.name}';
+            '${temporaryDir.path}/compressed_$compressedImageName.$compressedImageExt';
 
         await File(compressedImagePath).writeAsBytes(compressedImage);
 

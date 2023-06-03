@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
+  bmff:
+    dependency: transitive
+    description:
+      name: bmff
+      sha256: "5d2c606a1c34338e209b56dd7d6128c8b63b09414e054c779c45ea374f07e1b6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -496,6 +504,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  image_size_getter_heic:
+    dependency: "direct main"
+    description:
+      name: image_size_getter_heic
+      sha256: "0e890aa5ddd37ed892ca59f9da70d319013b6abc56b8d53964cead21db2aa8bd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   intl:
     dependency: transitive
     description:

@@ -6,7 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image_compare_slider/image_compare_slider.dart';
 import 'package:image_size_getter/file_input.dart';
-import 'package:image_size_getter/image_size_getter.dart';
+import 'package:image_size_getter_heic/image_size_getter_heic.dart';
 
 @RoutePage()
 class ImageComparePage extends StatelessWidget {
@@ -46,7 +46,7 @@ class ImageComparePage extends StatelessWidget {
                 ),
                 itemOneBuilder: (child, context) {
                   final file = File(originalImage.path!);
-                  final image = ImageSizeGetter.getSize(FileInput(file));
+                  final imageSize = ImageSizeGetter.getSize(FileInput(file));
 
                   return SizedBox(
                     width: double.infinity,
@@ -73,7 +73,7 @@ class ImageComparePage extends StatelessWidget {
                                   horizontal: 4,
                                 ),
                                 child: Text(
-                                    'Asli: ${image.width} × ${image.height}'),
+                                    'Asli: ${imageSize.width} × ${imageSize.height}'),
                               ),
                             ),
                           ),
@@ -106,7 +106,10 @@ class ImageComparePage extends StatelessWidget {
                 },
                 itemTwoBuilder: (child, context) {
                   final file = File(compressedImage.path!);
-                  final image = ImageSizeGetter.getSize(FileInput(file));
+                  Size? imageSize;
+                  if (compressedImage.extension == 'heic') {
+                    imageSize = ImageSizeGetter.getSize(FileInput(file));
+                  }
 
                   return SizedBox(
                     width: double.infinity,
@@ -116,30 +119,31 @@ class ImageComparePage extends StatelessWidget {
                           width: double.infinity,
                           child: child,
                         ),
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          child: Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Material(
-                              borderRadius: BorderRadius.circular(8),
-                              color: colorScheme.secondary.withOpacity(0.6),
-                              textStyle: textTheme.labelSmall
-                                  ?.copyWith(color: colorScheme.onSecondary),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 2,
-                                  horizontal: 4,
-                                ),
-                                child: Text(
-                                  'Dikompresi: ${image.width} × ${image.height}',
-                                  textAlign: TextAlign.end,
+                        if (imageSize != null)
+                          Positioned(
+                            top: 0,
+                            left: 0,
+                            right: 0,
+                            child: Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Material(
+                                borderRadius: BorderRadius.circular(8),
+                                color: colorScheme.secondary.withOpacity(0.6),
+                                textStyle: textTheme.labelSmall
+                                    ?.copyWith(color: colorScheme.onSecondary),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 2,
+                                    horizontal: 4,
+                                  ),
+                                  child: Text(
+                                    'Dikompresi: ${imageSize.width} × ${imageSize.height}',
+                                    textAlign: TextAlign.end,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
                         Positioned(
                           bottom: 0,
                           left: 0,

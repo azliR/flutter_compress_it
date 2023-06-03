@@ -5,6 +5,7 @@ import 'package:compress_it/home-wrapper/view/home_wrapper_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:image_size_getter_heic/image_size_getter_heic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -46,6 +47,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    final decoder = HeicDecoder();
+    ImageSizeGetter.registerDecoder(decoder);
+
+    EasyLoading.instance
+      ..displayDuration = const Duration(milliseconds: 2000)
+      ..indicatorType = EasyLoadingIndicatorType.chasingDots
+      ..loadingStyle = EasyLoadingStyle.dark
+      ..maskType = EasyLoadingMaskType.black
+      ..indicatorSize = 45.0
+      ..radius = 16
+      ..userInteractions = false
+      ..dismissOnTap = false;
+
     EasyLoading.addStatusCallback((status) {
       switch (status) {
         case EasyLoadingStatus.show:
@@ -65,16 +79,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    EasyLoading.instance
-      ..displayDuration = const Duration(milliseconds: 2000)
-      ..indicatorType = EasyLoadingIndicatorType.chasingDots
-      ..loadingStyle = EasyLoadingStyle.dark
-      ..maskType = EasyLoadingMaskType.black
-      ..indicatorSize = 45.0
-      ..radius = 16
-      ..userInteractions = false
-      ..dismissOnTap = false;
-
     return ValueListenableBuilder(
       valueListenable: homeNavigationNotifier,
       builder: (context, homeNavigation, child) {

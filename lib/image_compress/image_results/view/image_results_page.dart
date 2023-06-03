@@ -255,9 +255,9 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                 final compressedImage = widget.compressedFiles[index];
 
                 final file = File(compressedImage.path!);
-                final image = ImageSizeGetter.getSize(FileInput(file));
-
                 final heroTag = '${originalImage.name}-$index';
+
+                final imageSize = ImageSizeGetter.getSize(FileInput(file));
 
                 return InkWell(
                   onTap: () => context.router.push(
@@ -295,8 +295,8 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                                     vertical: 2,
                                     horizontal: 4,
                                   ),
-                                  child:
-                                      Text('${image.height} × ${image.width}'),
+                                  child: Text(
+                                      '${imageSize.height} × ${imageSize.width}'),
                                 ),
                               ),
                             ),

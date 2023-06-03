@@ -132,7 +132,7 @@ class _ResizeFieldState extends State<ResizeField> {
         ),
         const SizedBox(height: 12),
         Text(
-          'Jika keduanya dikosongkan, gambar akan diresize menjadi 2560 × 1920.',
+          'Jika keduanya dikosongkan, gambar akan diresize sesuai dengan format yang dipilih.',
           style: textTheme.bodySmall?.copyWith(
             color: colorScheme.outline,
           ),

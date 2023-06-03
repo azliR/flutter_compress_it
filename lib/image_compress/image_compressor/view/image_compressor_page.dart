@@ -9,6 +9,7 @@ import 'package:compress_it/image_compress/image_compressor/widget/resize_field_
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_size_getter/file_input.dart';
 import 'package:image_size_getter/image_size_getter.dart';
 
@@ -28,6 +29,7 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
   double _quality = 80;
   int? _minWidth;
   int? _minHeight;
+  var _compressFormat = CompressFormat.jpeg;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Detail gambar', style: textTheme.titleSmall),
-                    const SizedBox(height: 2),
+                    const SizedBox(height: 4),
                     Text(
                       '${widget.files.length} foto, total ukuran ${formatSize(totalSize)}',
                       style: textTheme.bodyMedium,
@@ -74,7 +76,7 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text('Kualitas', style: textTheme.titleSmall),
                     ),
-                    const SizedBox(height: 2),
+                    const SizedBox(height: 4),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Text(
@@ -104,12 +106,48 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Resize', style: textTheme.titleSmall),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     ResizeField(
                       onChanged: (width, height) {
                         _minWidth = width;
                         _minHeight = height;
                       },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Card(
+              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Konversi', style: textTheme.titleSmall),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Pilih format output gambar. Beberapa format mungkin tidak didukung oleh perangkat Anda.',
+                      style: textTheme.bodySmall?.copyWith(
+                        color: colorScheme.outline,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      children: CompressFormat.values.map((compressFormat) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          child: ChoiceChip(
+                            label: Text(compressFormat.name),
+                            selected: _compressFormat == compressFormat,
+                            onSelected: (value) {
+                              setState(() => _compressFormat = compressFormat);
+                            },
+                          ),
+                        );
+                      }).toList(),
                     ),
                   ],
                 ),
@@ -131,6 +169,7 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                     quality: _quality.round(),
                     minWidth: _minWidth,
                     minHeight: _minHeight,
+                    compressFormat: _compressFormat,
                   );
                   await EasyLoading.dismiss();
                   if (failure != null) {
