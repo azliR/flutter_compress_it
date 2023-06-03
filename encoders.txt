@@ -1,0 +1,188 @@
+Encoders:
+V..... = Video
+A..... = Audio
+S..... = Subtitle
+.F.... = Frame-level multithreading
+..S... = Slice-level multithreading
+...X.. = Codec is experimental
+....B. = Supports draw_horiz_band
+.....D = Supports direct rendering method 1
+------
+V....D a64multi              (codec a64_multi)
+V....D a64multi5             (codec a64_multi5)
+V..... alias_pix            
+V..... amv                  
+V....D apng                 
+V..... asv1                 
+V..... asv2                 
+V....D avrp                 
+V..X.D avui                 
+V....D ayuv                 
+VF...D bitpacked            
+V....D bmp                  
+VF.... cfhd                 
+V..... cinepak              
+V....D cljr                 
+V.S..D vc2                   (codec dirac)
+VFS..D dnxhd                
+V....D dpx                  
+VFS..D dvvideo              
+VF...D exr                  
+V.S... ffv1                 
+VF.... ffvhuff              
+V....D fits                 
+V..... flashsv              
+V..... flashsv2             
+V..... flv                   (codec flv1)
+V..... gif                  
+V..... h261                 
+V..... h263                 
+V..... h263_v4l2m2m          (codec h263)
+V.S... h263p                
+V..... h264_v4l2m2m          (codec h264)
+V..... hevc_v4l2m2m          (codec hevc)
+VF.... huffyuv              
+V..... jpeg2000             
+VF...D jpegls               
+VF.... ljpeg                
+VF.... magicyuv             
+VFS... mjpeg                
+V.S... mpeg1video           
+V.S... mpeg2video           
+V.S... mpeg4                
+V..... mpeg4_v4l2m2m         (codec mpeg4)
+V..... msmpeg4v2            
+V..... msmpeg4               (codec msmpeg4v3)
+V..... msvideo1             
+V....D pam                  
+V....D pbm                  
+V..... pcx                  
+V....D pfm                  
+V....D pgm                  
+V....D pgmyuv               
+V....D phm                  
+VF.... png                  
+V....D ppm                  
+VF.... prores               
+VF.... prores_aw             (codec prores)
+VFS... prores_ks             (codec prores)
+VF.... qoi                  
+V..... qtrle                
+V....D r10k                 
+V....D r210                 
+VF...D rawvideo             
+V..... roqvideo              (codec roq)
+V..... rpza                 
+V..... rv10                 
+V..... rv20                 
+V..... sgi                  
+V..... smc                  
+V..... snow                 
+V..... speedhq              
+V..... sunrast              
+V..... svq1                 
+V..... targa                
+VF.... tiff                 
+VF.... utvideo              
+VF...D v210                 
+V....D v308                 
+V....D v408                 
+V....D v410                 
+V.S..D vbn                  
+V..... vp8_v4l2m2m           (codec vp8)
+V..... wmv1                 
+V..... wmv2                 
+V..... wrapped_avframe      
+V..... xbm                  
+V....D xface                
+V....D xwd                  
+V....D y41p                 
+V....D yuv4                 
+VF.... zlib                 
+V....D zmbv                 
+A..... aac                  
+A....D ac3                  
+A....D ac3_fixed             (codec ac3)
+A....D adpcm_adx            
+A....D adpcm_argo           
+A....D g722                  (codec adpcm_g722)
+A....D g726                  (codec adpcm_g726)
+A....D g726le                (codec adpcm_g726le)
+A....D adpcm_ima_alp        
+A....D adpcm_ima_amv        
+A....D adpcm_ima_apm        
+A....D adpcm_ima_qt         
+A....D adpcm_ima_ssi        
+A....D adpcm_ima_wav        
+A....D adpcm_ima_ws         
+A....D adpcm_ms             
+A....D adpcm_swf            
+A....D adpcm_yamaha         
+A..... alac                 
+A....D aptx                 
+A....D aptx_hd              
+A....D comfortnoise         
+A....D dfpwm                
+A..X.D dca                   (codec dts)
+A....D eac3                 
+A....D flac                 
+A....D g723_1               
+A..X.. mlp                  
+A..... mp2                  
+A..... mp2fixed              (codec mp2)
+A....D nellymoser           
+A..X.. opus                 
+A....D pcm_alaw             
+A....D pcm_bluray           
+A....D pcm_dvd              
+A....D pcm_f32be            
+A....D pcm_f32le            
+A....D pcm_f64be            
+A....D pcm_f64le            
+A....D pcm_mulaw            
+A....D pcm_s16be            
+A....D pcm_s16be_planar     
+A....D pcm_s16le            
+A....D pcm_s16le_planar     
+A....D pcm_s24be            
+A....D pcm_s24daud          
+A....D pcm_s24le            
+A....D pcm_s24le_planar     
+A....D pcm_s32be            
+A....D pcm_s32le            
+A....D pcm_s32le_planar     
+A....D pcm_s64be            
+A....D pcm_s64le            
+A....D pcm_s8               
+A....D pcm_s8_planar        
+A....D pcm_u16be            
+A....D pcm_u16le            
+A....D pcm_u24be            
+A....D pcm_u24le            
+A....D pcm_u32be            
+A....D pcm_u32le            
+A....D pcm_u8               
+A....D pcm_vidc             
+A....D real_144              (codec ra_144)
+A....D roq_dpcm             
+A..X.D s302m                
+A....D sbc                  
+A..X.. sonic                
+A..X.. sonicls              
+A..X.. truehd               
+A..... tta                  
+A..X.. vorbis               
+A..... wavpack              
+A..... wmav1                
+A..... wmav2                
+S..... ssa                   (codec ass)
+S..... ass                  
+S..... dvbsub                (codec dvb_subtitle)
+S..... dvdsub                (codec dvd_subtitle)
+S..... mov_text             
+S..... srt                   (codec subrip)
+S..... subrip               
+S..... text                 
+S..... ttml                 
+S..... webvtt               
+S..... xsub
