@@ -219,7 +219,9 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                         elevation: 0,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 12),
+                            vertical: 8,
+                            horizontal: 12,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -296,7 +298,8 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                                     horizontal: 4,
                                   ),
                                   child: Text(
-                                      '${imageSize.height} × ${imageSize.width}'),
+                                    '${imageSize.height} × ${imageSize.width}',
+                                  ),
                                 ),
                               ),
                             ),
@@ -315,8 +318,11 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                                     vertical: 2,
                                     horizontal: 4,
                                   ),
-                                  child: Text(formatSize(
-                                      widget.compressedFiles[index].size)),
+                                  child: Text(
+                                    formatSize(
+                                      widget.compressedFiles[index].size,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

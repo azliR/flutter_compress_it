@@ -25,9 +25,6 @@ class ImageCompressorRepository {
       for (var i = 0; i < files.length; i++) {
         final file = files[i];
         final imageSize = ImageSizeGetter.getSize(FileInput(File(file.path!)));
-        // final image = await decodeImageFile(file.path!);
-        // final resizedImage =
-        //     copyResize(image!, width: minWidth, height: minHeight);
         final temporaryDir = await path.getTemporaryDirectory();
         final resizedImagePath = '${temporaryDir.path}/resized_${file.name}';
 

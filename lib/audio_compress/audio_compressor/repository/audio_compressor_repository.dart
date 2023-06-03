@@ -50,21 +50,18 @@ class AudioCompressorRepository {
         final file = files[i];
 
         final temporaryDir = await path.getTemporaryDirectory();
-        final copiedAudioPath =
-            '${temporaryDir.path}/copied_$i.${file.extension}';
         final compressedAudioPath =
-            '${temporaryDir.path}/compressed_$i.${file.extension}';
+            '${temporaryDir.path}/compressed_${file.name}';
 
-        final copiedFile = await File(file.path!).copy(copiedAudioPath);
         final ffmpegQuality = 9 - quality + 1;
 
         final String command;
         if (bitrate != null && bitrate != 0) {
           command =
-              '-i ${copiedFile.path} -b:a ${bitrate}k $compressedAudioPath -y';
+              "-i '${file.path}' -b:a ${bitrate}k '$compressedAudioPath' -y";
         } else {
           command =
-              '-i ${copiedFile.path} -q:a $ffmpegQuality $compressedAudioPath -y';
+              "-i '${file.path}' -q:a $ffmpegQuality '$compressedAudioPath' -y";
         }
 
         final session = await FFmpegKit.execute(command);

@@ -73,7 +73,7 @@ class SelectAudioPage extends StatelessWidget {
                         width: 56,
                       ),
                       applicationName: 'CompressIt',
-                      applicationLegalese: '©2023 CompressIt',
+                      applicationLegalese: '©2023 azliR',
                       applicationVersion: packageInfo.version,
                     );
                   });

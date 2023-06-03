@@ -57,7 +57,7 @@ class _AudioCompressorPageState extends State<AudioCompressorPage> {
         await EasyLoading.showProgress(
           completePercentage / 100,
           status:
-              'Selesai $_compressQueueIndex/${audioDurations.length} : $completePercentage%',
+              'Dikompresi $_compressQueueIndex/${audioDurations.length}: $completePercentage%',
         );
         if (completePercentage == 100) {
           if (_compressQueueIndex == audioDurations.length - 1) {
@@ -179,7 +179,9 @@ class _AudioCompressorPageState extends State<AudioCompressorPage> {
                     ? Card(
                         key: const ValueKey(CompressBy.quality),
                         margin: const EdgeInsets.symmetric(
-                            vertical: 4, horizontal: 8),
+                          vertical: 4,
+                          horizontal: 8,
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           child: Column(
@@ -188,8 +190,10 @@ class _AudioCompressorPageState extends State<AudioCompressorPage> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 16),
-                                child: Text('Kualitas',
-                                    style: textTheme.titleSmall),
+                                child: Text(
+                                  'Kualitas',
+                                  style: textTheme.titleSmall,
+                                ),
                               ),
                               const SizedBox(height: 2),
                               Padding(
@@ -215,7 +219,9 @@ class _AudioCompressorPageState extends State<AudioCompressorPage> {
                     : Card(
                         key: const ValueKey(CompressBy.bitrate),
                         margin: const EdgeInsets.symmetric(
-                            vertical: 4, horizontal: 8),
+                          vertical: 4,
+                          horizontal: 8,
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           child: Column(
@@ -224,8 +230,10 @@ class _AudioCompressorPageState extends State<AudioCompressorPage> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 16),
-                                child: Text('Bitrate (kbps)',
-                                    style: textTheme.titleSmall),
+                                child: Text(
+                                  'Bitrate (kbps)',
+                                  style: textTheme.titleSmall,
+                                ),
                               ),
                               const SizedBox(height: 2),
                               Padding(

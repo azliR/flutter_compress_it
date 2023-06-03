@@ -210,7 +210,9 @@ class _AudioResultsPageState extends State<AudioResultsPage> {
                         elevation: 0,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 8, horizontal: 12),
+                            vertical: 8,
+                            horizontal: 12,
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -239,7 +241,9 @@ class _AudioResultsPageState extends State<AudioResultsPage> {
               itemBuilder: (context, index) {
                 final file = widget.compressedFiles[index];
                 return AudioTile(
-                    file: file, repository: _audioCompressedRepository);
+                  file: file,
+                  repository: _audioCompressedRepository,
+                );
               },
             ),
           ],

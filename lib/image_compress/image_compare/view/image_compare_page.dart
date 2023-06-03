@@ -73,7 +73,8 @@ class ImageComparePage extends StatelessWidget {
                                   horizontal: 4,
                                 ),
                                 child: Text(
-                                    'Asli: ${imageSize.width} × ${imageSize.height}'),
+                                  'Asli: ${imageSize.width} × ${imageSize.height}',
+                                ),
                               ),
                             ),
                           ),
@@ -95,7 +96,8 @@ class ImageComparePage extends StatelessWidget {
                                   horizontal: 4,
                                 ),
                                 child: Text(
-                                    'Asli: ${formatSize(originalImage.size)}'),
+                                  'Asli: ${formatSize(originalImage.size)}',
+                                ),
                               ),
                             ),
                           ),
