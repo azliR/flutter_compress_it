@@ -57,7 +57,7 @@ class ImageCompressorRepository {
 
         compressedFiles.add(
           PlatformFile(
-            name: file.name,
+            name: '$compressedImageName.$compressedImageExt',
             size: compressedImage.length,
             path: compressedImagePath,
           ),

@@ -59,12 +59,11 @@ class ImageComparePage extends StatelessWidget {
                         Positioned(
                           top: 0,
                           left: 0,
-                          right: 0,
                           child: Padding(
                             padding: const EdgeInsets.all(4),
                             child: Material(
                               borderRadius: BorderRadius.circular(8),
-                              color: colorScheme.secondary.withOpacity(0.6),
+                              color: colorScheme.secondary.withOpacity(0.8),
                               textStyle: textTheme.labelSmall
                                   ?.copyWith(color: colorScheme.onSecondary),
                               child: Padding(
@@ -72,31 +71,27 @@ class ImageComparePage extends StatelessWidget {
                                   vertical: 2,
                                   horizontal: 4,
                                 ),
-                                child: Text(
-                                  'Asli: ${imageSize.width} × ${imageSize.height}',
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Material(
-                              borderRadius: BorderRadius.circular(8),
-                              color: colorScheme.tertiary.withOpacity(0.6),
-                              textStyle: textTheme.labelSmall
-                                  ?.copyWith(color: colorScheme.onTertiary),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 2,
-                                  horizontal: 4,
-                                ),
-                                child: Text(
-                                  'Asli: ${formatSize(originalImage.size)}',
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Asli:',
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      '${imageSize.width} × ${imageSize.height}',
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      formatSize(originalImage.size),
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      originalImage.extension?.toUpperCase() ??
+                                          '',
+                                      textAlign: TextAlign.end,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -120,13 +115,12 @@ class ImageComparePage extends StatelessWidget {
                         ),
                         Positioned(
                           top: 0,
-                          left: 0,
                           right: 0,
                           child: Padding(
                             padding: const EdgeInsets.all(4),
                             child: Material(
                               borderRadius: BorderRadius.circular(8),
-                              color: colorScheme.secondary.withOpacity(0.6),
+                              color: colorScheme.secondary.withOpacity(0.8),
                               textStyle: textTheme.labelSmall
                                   ?.copyWith(color: colorScheme.onSecondary),
                               child: Padding(
@@ -134,33 +128,28 @@ class ImageComparePage extends StatelessWidget {
                                   vertical: 2,
                                   horizontal: 4,
                                 ),
-                                child: Text(
-                                  'Dikompresi: ${imageSize.width} × ${imageSize.height}',
-                                  textAlign: TextAlign.end,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Material(
-                              borderRadius: BorderRadius.circular(8),
-                              color: colorScheme.tertiary.withOpacity(0.6),
-                              textStyle: textTheme.labelSmall
-                                  ?.copyWith(color: colorScheme.onTertiary),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 2,
-                                  horizontal: 4,
-                                ),
-                                child: Text(
-                                  'Dikompresi: ${formatSize(compressedImage.size)}',
-                                  textAlign: TextAlign.end,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'Dikompresi:',
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      '${imageSize.width} × ${imageSize.height}',
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      formatSize(compressedImage.size),
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      compressedImage.extension
+                                              ?.toUpperCase() ??
+                                          '',
+                                      textAlign: TextAlign.end,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

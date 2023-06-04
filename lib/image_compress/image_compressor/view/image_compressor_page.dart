@@ -234,21 +234,47 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                       ),
                       Align(
                         alignment: Alignment.bottomRight,
-                        child: Padding(
-                          padding: const EdgeInsets.all(4),
-                          child: Material(
-                            borderRadius: BorderRadius.circular(8),
-                            color: colorScheme.tertiary,
-                            textStyle: textTheme.labelSmall
-                                ?.copyWith(color: colorScheme.onTertiary),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 2,
-                                horizontal: 4,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Material(
+                                borderRadius: BorderRadius.circular(8),
+                                color: colorScheme.tertiary,
+                                textStyle: textTheme.labelSmall
+                                    ?.copyWith(color: colorScheme.onTertiary),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 2,
+                                    horizontal: 4,
+                                  ),
+                                  child: Text(
+                                    widget.files[index].extension
+                                            ?.toUpperCase() ??
+                                        '',
+                                  ),
+                                ),
                               ),
-                              child: Text(formatSize(widget.files[index].size)),
                             ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: Material(
+                                borderRadius: BorderRadius.circular(8),
+                                color: colorScheme.tertiary,
+                                textStyle: textTheme.labelSmall
+                                    ?.copyWith(color: colorScheme.onTertiary),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 2,
+                                    horizontal: 4,
+                                  ),
+                                  child: Text(
+                                      formatSize(widget.files[index].size)),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

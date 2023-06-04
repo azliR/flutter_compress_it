@@ -306,25 +306,47 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                           ),
                           Align(
                             alignment: Alignment.bottomRight,
-                            child: Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Material(
-                                borderRadius: BorderRadius.circular(8),
-                                color: colorScheme.secondary,
-                                textStyle: textTheme.labelSmall
-                                    ?.copyWith(color: colorScheme.onSecondary),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 2,
-                                    horizontal: 4,
-                                  ),
-                                  child: Text(
-                                    formatSize(
-                                      widget.compressedFiles[index].size,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(4),
+                                  child: Material(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: colorScheme.tertiary,
+                                    textStyle: textTheme.labelSmall?.copyWith(
+                                        color: colorScheme.onTertiary),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 2,
+                                        horizontal: 4,
+                                      ),
+                                      child: Text(
+                                        widget.compressedFiles[index].extension
+                                                ?.toUpperCase() ??
+                                            '',
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
+                                Padding(
+                                  padding: const EdgeInsets.all(4),
+                                  child: Material(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: colorScheme.tertiary,
+                                    textStyle: textTheme.labelSmall?.copyWith(
+                                        color: colorScheme.onTertiary),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 2,
+                                        horizontal: 4,
+                                      ),
+                                      child: Text(formatSize(
+                                          widget.compressedFiles[index].size)),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Center(
