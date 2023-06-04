@@ -298,7 +298,7 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                                     horizontal: 4,
                                   ),
                                   child: Text(
-                                    '${imageSize.height} × ${imageSize.width}',
+                                    '${imageSize.width} × ${imageSize.height}',
                                   ),
                                 ),
                               ),
