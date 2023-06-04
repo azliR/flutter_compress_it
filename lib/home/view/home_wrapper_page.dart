@@ -4,7 +4,7 @@ import 'package:animations/animations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:compress_it/core/app_router.gr.dart';
 import 'package:compress_it/core/failures.dart';
-import 'package:compress_it/home-wrapper/repository/home_repository.dart';
+import 'package:compress_it/home/repository/home_repository.dart';
 import 'package:compress_it/main.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';

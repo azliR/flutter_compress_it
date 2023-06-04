@@ -108,10 +108,7 @@ class ImageComparePage extends StatelessWidget {
                 },
                 itemTwoBuilder: (child, context) {
                   final file = File(compressedImage.path!);
-                  Size? imageSize;
-                  if (compressedImage.extension == 'heic') {
-                    imageSize = ImageSizeGetter.getSize(FileInput(file));
-                  }
+                  final imageSize = ImageSizeGetter.getSize(FileInput(file));
 
                   return SizedBox(
                     width: double.infinity,
@@ -121,31 +118,30 @@ class ImageComparePage extends StatelessWidget {
                           width: double.infinity,
                           child: child,
                         ),
-                        if (imageSize != null)
-                          Positioned(
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            child: Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: Material(
-                                borderRadius: BorderRadius.circular(8),
-                                color: colorScheme.secondary.withOpacity(0.6),
-                                textStyle: textTheme.labelSmall
-                                    ?.copyWith(color: colorScheme.onSecondary),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 2,
-                                    horizontal: 4,
-                                  ),
-                                  child: Text(
-                                    'Dikompresi: ${imageSize.width} × ${imageSize.height}',
-                                    textAlign: TextAlign.end,
-                                  ),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(8),
+                              color: colorScheme.secondary.withOpacity(0.6),
+                              textStyle: textTheme.labelSmall
+                                  ?.copyWith(color: colorScheme.onSecondary),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 2,
+                                  horizontal: 4,
+                                ),
+                                child: Text(
+                                  'Dikompresi: ${imageSize.width} × ${imageSize.height}',
+                                  textAlign: TextAlign.end,
                                 ),
                               ),
                             ),
                           ),
+                        ),
                         Positioned(
                           bottom: 0,
                           left: 0,

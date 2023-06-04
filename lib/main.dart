@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:compress_it/core/app_router.dart';
-import 'package:compress_it/home-wrapper/view/home_wrapper_page.dart';
+import 'package:compress_it/home/view/home_wrapper_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';

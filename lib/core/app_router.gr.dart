@@ -15,7 +15,7 @@ import 'package:compress_it/audio_compress/audio_results/view/audio_results_page
     as _i8;
 import 'package:compress_it/audio_compress/select_audio/view/select_audio_page.dart'
     as _i6;
-import 'package:compress_it/home-wrapper/view/home_wrapper_page.dart' as _i1;
+import 'package:compress_it/home/view/home_wrapper_page.dart' as _i1;
 import 'package:compress_it/image_compress/image_compare/view/image_compare_page.dart'
     as _i5;
 import 'package:compress_it/image_compress/image_compressor/view/image_compressor_page.dart'
