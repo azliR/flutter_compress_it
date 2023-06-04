@@ -227,7 +227,7 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                                 vertical: 2,
                                 horizontal: 4,
                               ),
-                              child: Text('${image.height} × ${image.width}'),
+                              child: Text('${image.width} × ${image.height}'),
                             ),
                           ),
                         ),
