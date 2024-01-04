@@ -42,8 +42,8 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(
-            title: const Text('Konfigurasi kompresi'),
+          const SliverAppBar.large(
+            title: Text('Konfigurasi kompresi'),
           ),
           SliverToBoxAdapter(
             child: Card(
@@ -163,7 +163,7 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                   await EasyLoading.show(
                     status: 'Sedang mengompresi, harap tunggu...',
                   );
-                  final (compressedFiles, failure) =
+                  final (compressedFiles, elapsed, failure) =
                       await _repository.compressImages(
                     files: widget.files,
                     quality: _quality.round(),
@@ -181,6 +181,7 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                       ImageResultsRoute(
                         originalFiles: widget.files,
                         compressedFiles: compressedFiles!,
+                        duration: elapsed,
                       ),
                     );
                   }
@@ -270,7 +271,8 @@ class _ImageCompressorPageState extends State<ImageCompressorPage> {
                                     horizontal: 4,
                                   ),
                                   child: Text(
-                                      formatSize(widget.files[index].size)),
+                                    formatSize(widget.files[index].size),
+                                  ),
                                 ),
                               ),
                             ),

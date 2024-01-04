@@ -12,13 +12,14 @@ import 'package:path_provider/path_provider.dart' as path;
 class ImageCompressorRepository {
   final _imageResizer = FcNativeImageResize();
 
-  Future<(List<PlatformFile>?, Failure?)> compressImages({
+  Future<(List<PlatformFile>?, Duration, Failure?)> compressImages({
     required List<PlatformFile> files,
     required int quality,
     required int? minWidth,
     required int? minHeight,
     required CompressFormat compressFormat,
   }) async {
+    final stopwatch = Stopwatch()..start();
     try {
       final compressedFiles = <PlatformFile>[];
 
@@ -44,7 +45,8 @@ class ImageCompressorRepository {
         );
 
         if (compressedImage == null) {
-          return (null, Failure('Gagal mengompres gambar'));
+          stopwatch.stop();
+          return (null, stopwatch.elapsed, Failure('Gagal mengompres gambar'));
         }
 
         final compressedImageName =
@@ -63,10 +65,16 @@ class ImageCompressorRepository {
           ),
         );
       }
-      return (compressedFiles, null);
+      stopwatch.stop();
+      return (compressedFiles, stopwatch.elapsed, null);
     } catch (e, stackTrace) {
+      stopwatch.stop();
       log(e.toString(), error: e, stackTrace: stackTrace);
-      return (null, Failure(e.toString(), error: e, stackTrace: stackTrace));
+      return (
+        null,
+        stopwatch.elapsed,
+        Failure(e.toString(), error: e, stackTrace: stackTrace)
+      );
     }
   }
 }

@@ -17,11 +17,13 @@ class ImageResultsPage extends StatefulWidget {
   const ImageResultsPage({
     required this.originalFiles,
     required this.compressedFiles,
+    required this.duration,
     super.key,
   });
 
   final List<PlatformFile> originalFiles;
   final List<PlatformFile> compressedFiles;
+  final Duration duration;
 
   @override
   State<ImageResultsPage> createState() => _ImageResultsPageState();
@@ -60,10 +62,32 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: CustomScrollView(
           slivers: [
-            SliverAppBar.large(
-              title: const Text('Hasil Kompresi'),
+            const SliverAppBar.large(
+              title: Text('Hasil Kompresi'),
             ),
-            if (max == compressedSize && max != originalSize)
+            SliverToBoxAdapter(
+              child: Card(
+                margin: EdgeInsets.zero,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    child: Text(
+                      'Waktu kompresi: ~${formatSeconds(widget.duration.inMilliseconds)} detik (${formatDecimal(widget.duration.inMilliseconds)} ms)',
+                      style: textTheme.labelMedium?.copyWith(
+                        color: colorScheme.outline,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SliverPadding(padding: EdgeInsets.all(8)),
+            if (max == compressedSize && max != originalSize) ...[
               SliverToBoxAdapter(
                 child: Card(
                   margin: EdgeInsets.zero,
@@ -93,7 +117,8 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                   ),
                 ),
               ),
-            const SliverPadding(padding: EdgeInsets.all(8)),
+              const SliverPadding(padding: EdgeInsets.all(8)),
+            ],
             SliverToBoxAdapter(
               child: Card(
                 margin: EdgeInsets.zero,
@@ -315,7 +340,8 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                                     borderRadius: BorderRadius.circular(8),
                                     color: colorScheme.tertiary,
                                     textStyle: textTheme.labelSmall?.copyWith(
-                                        color: colorScheme.onTertiary),
+                                      color: colorScheme.onTertiary,
+                                    ),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                         vertical: 2,
@@ -335,14 +361,18 @@ class _ImageResultsPageState extends State<ImageResultsPage> {
                                     borderRadius: BorderRadius.circular(8),
                                     color: colorScheme.tertiary,
                                     textStyle: textTheme.labelSmall?.copyWith(
-                                        color: colorScheme.onTertiary),
+                                      color: colorScheme.onTertiary,
+                                    ),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                         vertical: 2,
                                         horizontal: 4,
                                       ),
-                                      child: Text(formatSize(
-                                          widget.compressedFiles[index].size)),
+                                      child: Text(
+                                        formatSize(
+                                          widget.compressedFiles[index].size,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),

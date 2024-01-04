@@ -51,8 +51,8 @@ class _AudioResultsPageState extends State<AudioResultsPage> {
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: CustomScrollView(
           slivers: [
-            SliverAppBar.large(
-              title: const Text('Hasil Kompresi'),
+            const SliverAppBar.large(
+              title: Text('Hasil Kompresi'),
             ),
             if (max == compressedSize && max != originalSize)
               SliverToBoxAdapter(

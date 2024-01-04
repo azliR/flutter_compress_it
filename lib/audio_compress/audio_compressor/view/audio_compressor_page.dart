@@ -87,8 +87,8 @@ class _AudioCompressorPageState extends State<AudioCompressorPage> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(
-            title: const Text('Konfigurasi kompresi'),
+          const SliverAppBar.large(
+            title: Text('Konfigurasi kompresi'),
           ),
           SliverToBoxAdapter(
             child: Card(

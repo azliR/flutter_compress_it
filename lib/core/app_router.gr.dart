@@ -10,20 +10,20 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:compress_it/audio_compress/audio_compressor/view/audio_compressor_page.dart'
-    as _i7;
-import 'package:compress_it/audio_compress/audio_results/view/audio_results_page.dart'
-    as _i8;
-import 'package:compress_it/audio_compress/select_audio/view/select_audio_page.dart'
     as _i6;
-import 'package:compress_it/home/view/home_wrapper_page.dart' as _i1;
-import 'package:compress_it/image_compress/image_compare/view/image_compare_page.dart'
+import 'package:compress_it/audio_compress/audio_results/view/audio_results_page.dart'
+    as _i7;
+import 'package:compress_it/audio_compress/select_audio/view/select_audio_page.dart'
     as _i5;
-import 'package:compress_it/image_compress/image_compressor/view/image_compressor_page.dart'
-    as _i2;
-import 'package:compress_it/image_compress/image_results/view/image_results_page.dart'
+import 'package:compress_it/home/view/home_wrapper_page.dart' as _i8;
+import 'package:compress_it/image_compress/image_compare/view/image_compare_page.dart'
     as _i4;
-import 'package:compress_it/image_compress/select_image/view/select_image_page.dart'
+import 'package:compress_it/image_compress/image_compressor/view/image_compressor_page.dart'
+    as _i1;
+import 'package:compress_it/image_compress/image_results/view/image_results_page.dart'
     as _i3;
+import 'package:compress_it/image_compress/select_image/view/select_image_page.dart'
+    as _i2;
 import 'package:file_picker/file_picker.dart' as _i10;
 import 'package:flutter/material.dart' as _i11;
 
@@ -32,17 +32,11 @@ abstract class $AppRouter extends _i9.RootStackRouter {
 
   @override
   final Map<String, _i9.PageFactory> pagesMap = {
-    HomeWrapperRoute.name: (routeData) {
-      return _i9.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i1.HomeWrapperPage(),
-      );
-    },
     ImageCompressorRoute.name: (routeData) {
       final args = routeData.argsAs<ImageCompressorRouteArgs>();
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i2.ImageCompressorPage(
+        child: _i1.ImageCompressorPage(
           files: args.files,
           key: args.key,
         ),
@@ -51,16 +45,17 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     SelectImageRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.SelectImagePage(),
+        child: const _i2.SelectImagePage(),
       );
     },
     ImageResultsRoute.name: (routeData) {
       final args = routeData.argsAs<ImageResultsRouteArgs>();
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i4.ImageResultsPage(
+        child: _i3.ImageResultsPage(
           originalFiles: args.originalFiles,
           compressedFiles: args.compressedFiles,
+          duration: args.duration,
           key: args.key,
         ),
       );
@@ -69,7 +64,7 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       final args = routeData.argsAs<ImageCompareRouteArgs>();
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.ImageComparePage(
+        child: _i4.ImageComparePage(
           compressedImage: args.compressedImage,
           originalImage: args.originalImage,
           heroTag: args.heroTag,
@@ -80,14 +75,14 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     SelectAudioRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i6.SelectAudioPage(),
+        child: const _i5.SelectAudioPage(),
       );
     },
     AudioCompressorRoute.name: (routeData) {
       final args = routeData.argsAs<AudioCompressorRouteArgs>();
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i7.AudioCompressorPage(
+        child: _i6.AudioCompressorPage(
           files: args.files,
           key: args.key,
         ),
@@ -97,32 +92,24 @@ abstract class $AppRouter extends _i9.RootStackRouter {
       final args = routeData.argsAs<AudioResultsRouteArgs>();
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i8.AudioResultsPage(
+        child: _i7.AudioResultsPage(
           originalFiles: args.originalFiles,
           compressedFiles: args.compressedFiles,
           key: args.key,
         ),
       );
     },
+    HomeWrapperRoute.name: (routeData) {
+      return _i9.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i8.HomeWrapperPage(),
+      );
+    },
   };
 }
 
 /// generated route for
-/// [_i1.HomeWrapperPage]
-class HomeWrapperRoute extends _i9.PageRouteInfo<void> {
-  const HomeWrapperRoute({List<_i9.PageRouteInfo>? children})
-      : super(
-          HomeWrapperRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeWrapperRoute';
-
-  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i2.ImageCompressorPage]
+/// [_i1.ImageCompressorPage]
 class ImageCompressorRoute extends _i9.PageRouteInfo<ImageCompressorRouteArgs> {
   ImageCompressorRoute({
     required List<_i10.PlatformFile> files,
@@ -160,7 +147,7 @@ class ImageCompressorRouteArgs {
 }
 
 /// generated route for
-/// [_i3.SelectImagePage]
+/// [_i2.SelectImagePage]
 class SelectImageRoute extends _i9.PageRouteInfo<void> {
   const SelectImageRoute({List<_i9.PageRouteInfo>? children})
       : super(
@@ -174,11 +161,12 @@ class SelectImageRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.ImageResultsPage]
+/// [_i3.ImageResultsPage]
 class ImageResultsRoute extends _i9.PageRouteInfo<ImageResultsRouteArgs> {
   ImageResultsRoute({
     required List<_i10.PlatformFile> originalFiles,
     required List<_i10.PlatformFile> compressedFiles,
+    required Duration duration,
     _i11.Key? key,
     List<_i9.PageRouteInfo>? children,
   }) : super(
@@ -186,6 +174,7 @@ class ImageResultsRoute extends _i9.PageRouteInfo<ImageResultsRouteArgs> {
           args: ImageResultsRouteArgs(
             originalFiles: originalFiles,
             compressedFiles: compressedFiles,
+            duration: duration,
             key: key,
           ),
           initialChildren: children,
@@ -201,6 +190,7 @@ class ImageResultsRouteArgs {
   const ImageResultsRouteArgs({
     required this.originalFiles,
     required this.compressedFiles,
+    required this.duration,
     this.key,
   });
 
@@ -208,16 +198,18 @@ class ImageResultsRouteArgs {
 
   final List<_i10.PlatformFile> compressedFiles;
 
+  final Duration duration;
+
   final _i11.Key? key;
 
   @override
   String toString() {
-    return 'ImageResultsRouteArgs{originalFiles: $originalFiles, compressedFiles: $compressedFiles, key: $key}';
+    return 'ImageResultsRouteArgs{originalFiles: $originalFiles, compressedFiles: $compressedFiles, duration: $duration, key: $key}';
   }
 }
 
 /// generated route for
-/// [_i5.ImageComparePage]
+/// [_i4.ImageComparePage]
 class ImageCompareRoute extends _i9.PageRouteInfo<ImageCompareRouteArgs> {
   ImageCompareRoute({
     required _i10.PlatformFile compressedImage,
@@ -265,7 +257,7 @@ class ImageCompareRouteArgs {
 }
 
 /// generated route for
-/// [_i6.SelectAudioPage]
+/// [_i5.SelectAudioPage]
 class SelectAudioRoute extends _i9.PageRouteInfo<void> {
   const SelectAudioRoute({List<_i9.PageRouteInfo>? children})
       : super(
@@ -279,7 +271,7 @@ class SelectAudioRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.AudioCompressorPage]
+/// [_i6.AudioCompressorPage]
 class AudioCompressorRoute extends _i9.PageRouteInfo<AudioCompressorRouteArgs> {
   AudioCompressorRoute({
     required List<_i10.PlatformFile> files,
@@ -317,7 +309,7 @@ class AudioCompressorRouteArgs {
 }
 
 /// generated route for
-/// [_i8.AudioResultsPage]
+/// [_i7.AudioResultsPage]
 class AudioResultsRoute extends _i9.PageRouteInfo<AudioResultsRouteArgs> {
   AudioResultsRoute({
     required List<_i10.PlatformFile> originalFiles,
@@ -357,4 +349,18 @@ class AudioResultsRouteArgs {
   String toString() {
     return 'AudioResultsRouteArgs{originalFiles: $originalFiles, compressedFiles: $compressedFiles, key: $key}';
   }
+}
+
+/// generated route for
+/// [_i8.HomeWrapperPage]
+class HomeWrapperRoute extends _i9.PageRouteInfo<void> {
+  const HomeWrapperRoute({List<_i9.PageRouteInfo>? children})
+      : super(
+          HomeWrapperRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeWrapperRoute';
+
+  static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
 }

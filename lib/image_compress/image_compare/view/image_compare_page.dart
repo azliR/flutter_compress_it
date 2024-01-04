@@ -29,8 +29,8 @@ class ImageComparePage extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar.large(
-            title: const Text('Bandingkan gambar'),
+          const SliverAppBar.large(
+            title: Text('Bandingkan gambar'),
           ),
           SliverToBoxAdapter(
             child: Hero(
@@ -74,7 +74,7 @@ class ImageComparePage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Asli:',
                                       textAlign: TextAlign.end,
                                     ),
@@ -131,7 +131,7 @@ class ImageComparePage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Text(
+                                    const Text(
                                       'Dikompresi:',
                                       textAlign: TextAlign.end,
                                     ),
